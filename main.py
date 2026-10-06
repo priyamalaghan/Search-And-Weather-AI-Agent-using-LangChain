@@ -91,16 +91,16 @@ def get_weather_data(location: str) -> str:
         f"Humidity: {data['current']['humidity']}%"
     )
     
-llm_with_weather_tool = llm.bind_tools([get_weather_data])
-response = llm_with_weather_tool.invoke("What is the current weather in New Delhi?")
-print(response.tool_calls)
+# llm_with_weather_tool = llm.bind_tools([get_weather_data])
+# response = llm_with_weather_tool.invoke("What is the current weather in New Delhi?")
+# print(response.tool_calls)
 
-# %%
-llm_with_date_tool = llm.bind_tools([get_current_date])
-response = llm_with_date_tool.invoke("What is today's date")
-if response.tool_calls:
-    date = get_current_date.invoke(response.tool_calls[0]["args"])
-    print(date)
+# # %%
+# llm_with_date_tool = llm.bind_tools([get_current_date])
+# response = llm_with_date_tool.invoke("What is today's date")
+# if response.tool_calls:
+#     date = get_current_date.invoke(response.tool_calls[0]["args"])
+#     print(date)
 
 
 # %%
@@ -110,22 +110,22 @@ result = search_tool.invoke("Give me the latest news on AI")
 result
 
 # %%
-llm_with_tavily_tool = llm.bind_tools([search_tool])
+# llm_with_tavily_tool = llm.bind_tools([search_tool])
 
-response = llm_with_tavily_tool.invoke("What is the top latest news on AI?")
+# response = llm_with_tavily_tool.invoke("What is the top latest news on AI?")
 
-if response.tool_calls:
-    result = search_tool.invoke(response.tool_calls[0]["args"])
+# if response.tool_calls:
+#     result = search_tool.invoke(response.tool_calls[0]["args"])
 
-    for item in result:
-        print(item)
+#     for item in result:
+#         print(item)
 
-        if "url" in item:
-            display(
-                HTML(
-                    f'<a href="{item["url"]}" target="_blank">{item["url"]}</a>'
-                )
-            )
+#         if "url" in item:
+#             display(
+#                 HTML(
+#                     f'<a href="{item["url"]}" target="_blank">{item["url"]}</a>'
+#                 )
+#             )
 
 #search_tool = the tool
 #llm_with_tavily_tool = LLM with that tool attached.
@@ -157,25 +157,25 @@ def get_top_5_gainers(query: str="") -> str:
     ]
 
 
-llm_with_stock_tool = llm.bind_tools([get_top_5_gainers])
-response = llm_with_stock_tool.invoke("What are the top 5 gainers in the US stock market today?")
-if response.tool_calls:
+# llm_with_stock_tool = llm.bind_tools([get_top_5_gainers])
+# response = llm_with_stock_tool.invoke("What are the top 5 gainers in the US stock market today?")
+# if response.tool_calls:
     
-    result = get_top_5_gainers.invoke(
-        response.tool_calls[0]["args"]
-    )
+#     result = get_top_5_gainers.invoke(
+#         response.tool_calls[0]["args"]
+#     )
 
-    for stock in result:
-        print(
-            stock["symbol"],
-            "-",
-            stock["name"],
-            "- $",
-            stock["price"],
-            "-",
-            round(stock["change_percent"], 2),
-            "%"
-        )
+#     for stock in result:
+#         print(
+#             stock["symbol"],
+#             "-",
+#             stock["name"],
+#             "- $",
+#             stock["price"],
+#             "-",
+#             round(stock["change_percent"], 2),
+#             "%"
+#         )
 
 
 
