@@ -307,11 +307,11 @@ Thought: {agent_scratchpad}
 search_tool.name
 
 # %%
-response = llm_with_tavily_tool.invoke(
-    "Search for the capital of India."
-)
+# response = llm_with_tavily_tool.invoke(
+#     "Search for the capital of India."
+# )
 
-print(response.tool_calls)
+# print(response.tool_calls)
 
 # %%
 #Create Agent
