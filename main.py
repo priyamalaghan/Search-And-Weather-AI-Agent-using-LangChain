@@ -131,7 +131,7 @@ result
 #llm_with_tavily_tool = LLM with that tool attached.
 
 # %%
-print(response.tool_calls)
+#print(response.tool_calls)
 
 # %%
 import yfinance as yf
